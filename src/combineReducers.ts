@@ -111,12 +111,11 @@ function assertReducerShape(reducers: ReducersMapObject) {
  * reducer function. It will call every child reducer, and gather their results
  * into a single state object, whose keys correspond to the keys of the passed
  * reducer functions.
- *
  * 将值不同的reducer函数的对象转换为单个reducer函数。它将调用每个子级reducer，并将其结果
- * 收集到一个状态对象中，该对象的key对应于传递的reducer函数的key。
+ * 收集到一个state对象中，该对象的key与传递的reducer 方法的key相对应。
  *
  * @template S Combined state object type.
- * @template S 组合state对象type。
+ * 组合state对象type。
  *
  * @param reducers An object whose values correspond to different reducer
  *   functions that need to be combined into one. One handy way to obtain it
@@ -124,16 +123,15 @@ function assertReducerShape(reducers: ReducersMapObject) {
  *   return undefined for any action. Instead, they should return their
  *   initial state if the state passed to them was undefined, and the current
  *   state for any unrecognized action.
- *
- * @param reducers 一个包含不同reducer函数并且需要组合的对象。 一种方便的获取方式是使用
+ * 一个包含不同reducer函数并且需要组合的对象。 一种方便的获取方式是使用
  * ES6的`import * as reducers`。 reducer不管任何action都不应该返回undefined。
  * 相反，如果传递给他们的state是undefined，则它们应该返回其初始state，并且任何无法识别
  * 的action都应返回当前state。
  *
  * @returns A reducer function that invokes every reducer inside the passed
  *   object, and builds a state object with the same shape.
- * @returns 一个reducer函数，该函数会遍历调用传递的对象参数内的每个reducer，并且构建具有
- * 相同结构的新的state对象或者未变动的原state。
+ * 一个reducer函数，该函数会遍历调用传递的reducers参数对象内的每个reducer，
+ * 并且构建一个具有reducers参数对象相同结构的state对象
  */
 export default function combineReducers<S>(
   reducers: ReducersMapObject<S, any>

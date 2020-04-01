@@ -20,9 +20,9 @@ function bindActionCreator<A extends AnyAction = AnyAction>(
  * may be invoked directly. This is just a convenience method, as you can call
  * `store.dispatch(MyActionCreators.doSomething())` yourself just fine.
  *
- * 将值是action creators的对象转换为具有相同键的对象，但是转换后每个函数都包装在一个
- * `dispatch`调用中，以便可以直接调用它们（固定dispatch参数，技术中叫偏函数）。 这只是
- * 一种方便的方法，因为您可以自己调用`store.dispatch（MyActionCreators.doSomething（））`。
+ * 将对象值是action creators的对象转换为具有相同键的对象，但是转换后每个对象值函数都包装
+ * 在一个`dispatch`调用中，以便可以直接调用它们（固定dispatch参数，这种用法叫偏函数）。
+ * 这只是一种方便的模式，因为您可以自己调用`store.dispatch（MyActionCreators.doSomething（））`。
  *
  * For convenience, you can also pass an action creator as the first argument,
  * and get a dispatch wrapped function in return.

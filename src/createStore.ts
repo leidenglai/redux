@@ -176,8 +176,8 @@ export default function createStore<
    * and some part of the state tree may potentially have changed. You may then
    * call `getState()` to read the current state tree inside the callback.
    *
-   * 添加更改 `listener` 。 每当dispatch action时，都会调用它，并且state tree的某些部分可能已更改。
-   * 您可以调用`getState（）`来读取回调中的当前state tree。
+   * 添加更改 `listener` 。 每当dispatch action后，都会调用listener，并且state tree的
+   * 某些部分可能已更改。您可以在回调中调用`getState（）`来读取当前state tree。
    *
    * You may call `dispatch()` from a change listener, with the following
    * caveats:
@@ -203,7 +203,9 @@ export default function createStore<
    * 所有启动之前注册的listener将以最新 state 被调用。
    *
    * @param listener A callback to be invoked on every dispatch.
+   * 在每次dispatch上要调用的回调函数。
    * @returns A function to remove this change listener.
+   * 一个方法用于取消监听函数
    */
   function subscribe(listener: () => void) {
     if (typeof listener !== 'function') {
@@ -248,7 +250,7 @@ export default function createStore<
   /**
    * Dispatches an action. It is the only way to trigger a state change.
    *
-   * dispatch action。这是触发状态更改的唯一方法。
+   * dispatch action。这是触发state更改的唯一方法。
    *
    * The `reducer` function, used to create the store, will be called with the
    * current state tree and the given `action`. Its return value will
@@ -273,13 +275,12 @@ export default function createStore<
    * sessions, or use the time travelling `redux-devtools`. An action must have
    * a `type` property which may not be `undefined`. It is a good idea to use
    * string constants for action types.
-   *
-   * @param action  一个纯对象，表示 “要修改啥”。 保持操作的可序列化，这样您就可以记录
+   * 一个纯对象，表示 “要修改啥”。 保持操作的可序列化，这样您就可以记录
    * 和重现用户动作会话，或使用时间旅行`redux-devtools`工具。 动作必须具有`type`属性，
    * 该属性不能为`undefined`。 最好action type使用字符串常量。
    *
    * @returns For convenience, the same action object you dispatched.
-   * @returns 为方便起见，dispatch将直接原样返回action参数
+   * 为方便起见，dispatch将直接原样返回action参数
    *
    * Note that, if you use a custom middleware, it may wrap `dispatch()` to
    * return something else (for example, a Promise you can await).
