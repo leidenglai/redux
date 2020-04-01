@@ -24,9 +24,9 @@ import { Reducer } from './types/reducers'
  * 注意，每个中间件都会传入包含 `dispatch`和`getState`函数的对象 作为参数。
  *
  * @param middlewares The middleware chain to be applied.
- * @param middlewares 要加入的中间件链。
+ * 要加入的中间件链。
  * @returns A store enhancer applying the middleware.
- * @returns 一个加入中间件增强的store
+ * 一个加入中间件增强的store
  *
  * @template Ext Dispatch signature added by a middleware.
  * @template S The type of the state supported by a middleware.
