@@ -20,20 +20,31 @@ function bindActionCreator<A extends AnyAction = AnyAction>(
  * may be invoked directly. This is just a convenience method, as you can call
  * `store.dispatch(MyActionCreators.doSomething())` yourself just fine.
  *
+ * 将值是action creators的对象转换为具有相同键的对象，但是转换后每个函数都包装在一个
+ * `dispatch`调用中，以便可以直接调用它们（固定dispatch参数，技术中叫偏函数）。 这只是
+ * 一种方便的方法，因为您可以自己调用`store.dispatch（MyActionCreators.doSomething（））`。
+ *
  * For convenience, you can also pass an action creator as the first argument,
  * and get a dispatch wrapped function in return.
+ * 为了方便起见，您还可以将action creator作为第一个参数传递，返回一个包装了dispatch的函数偏函数。
  *
  * @param actionCreators An object whose values are action
  * creator functions. One handy way to obtain it is to use ES6 `import * as`
  * syntax. You may also pass a single function.
+ * 这是一个包含若干action creator方法的对象。 一种方便的获取方法是使用ES6的
+ * `import * as `语法。 您也可以传递一个函数。
  *
  * @param dispatch The `dispatch` function available on your Redux
  * store.
+ * Redux store 提供的`dispatch`方法
  *
  * @returns The object mimicking the original object, but with
  * every action creator wrapped into the `dispatch` call. If you passed a
  * function as `actionCreators`, the return value will also be a single
  * function.
+ * 该对象与传入的actionCreators对象具有同样的key，但是每个action creator都被包装
+ * 在`dispatch`调用中。 如果您将一个函数作为`actionCreators`传递，则返回值也将是
+ * 单个函数。
  */
 export default function bindActionCreators<A, C extends ActionCreator<A>>(
   actionCreator: C,
